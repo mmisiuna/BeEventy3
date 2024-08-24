@@ -1,0 +1,40 @@
+.event-container {
+  margin: 1vw 5vw; /* Ustawia odstęp 10vw po bokach i 1vw na górze oraz dole */
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 10px;
+  padding: 5px 10px;
+}
+
+.pagination span {
+  margin: 0 10px;
+}
+
+/* Styl dla aktywnego przycisku */
+button {
+  color: black;
+  background-color: #FCBE1D;
+  width: 4vw;
+  height: 4vw;
+  border-radius: 12vw;
+  font-size: 2vw;
+  margin: 1vw;
+  font-weight: 700;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+/* Styl dla wyłączonego przycisku */
+button:disabled {
+  background-color: #FCBE1D; /* Użycie tego samego koloru tła */
+  opacity: 0.5; /* Ustawienie przezroczystości, aby przycisk wyglądał na wyszarzony */
+  color: gray; /* Kolor tekstu na wyszarzony */
+  cursor: not-allowed; /* Ustawienie kursora na symbol zakazu */
+  box-shadow: none; /* Usunięcie cienia przycisku (jeśli jest) */
+}

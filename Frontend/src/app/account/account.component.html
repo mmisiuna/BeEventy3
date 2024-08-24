@@ -1,0 +1,175 @@
+<div class="user-profile">
+    <table>
+      <tr>
+        <td><strong>Name:</strong></td>
+        <td>
+          <span *ngIf="!isEditMode">{{ userData.name }}</span>
+          <input *ngIf="isEditMode" [(ngModel)]="userData.name" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td>
+          <span *ngIf="!isEditMode">{{ userData.email }}</span>
+          <input *ngIf="isEditMode" [(ngModel)]="userData.email" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Phone Number:</strong></td>
+        <td>
+          <span *ngIf="!isEditMode">{{ userData.phoneNumber }}</span>
+          <input *ngIf="isEditMode" [(ngModel)]="userData.phoneNumber" type="text" />
+        </td>
+      </tr>
+    </table>
+  
+    <button *ngIf="!isEditMode" (click)="toggleEditMode()">Edit</button>
+
+    <div *ngIf="isEditMode">
+      <button (click)="saveChanges()">Save</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </div>
+    <button (click)="deactivateUser(userData.id)">Dezaktywuj Konto</button>
+  </div>
+  
+
+  <!-- <table *ngIf="event && !isModeration" style="width: 100%; border-collapse: collapse;">
+    <tr>
+
+        <td colspan="7" style="font-weight: bold; font-size: 1.5vw;">
+            <button (click)="goBack()">↶</button> {{ event.name }}
+        </td>
+        <td colspan="3" rowspan="2" style="text-align: center; background-color: #F2F2F2;" class="image-cell">
+            <img [src]="'assets/events/' + event.image" (error)="loadImageError($event)" alt="Obrazek wydarzenia" style="width:10vw; height: auto;" [class]="getImageStyle(event)">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            {{ event.dateOfStart | date: 'dd.MM.yyyy' }} - {{ event.dateOfEnd | date: 'dd.MM.yyyy' }}
+        </td>
+        <td colspan="2">
+            {{ lowestTicketPrice !== undefined ? lowestTicketPrice : 'N/A' }} - {{ highestTicketPrice !== undefined ? highestTicketPrice : 'N/A' }} zł
+        </td>
+        <td>
+            Dodał: {{  this.authorName }} 
+            </td>
+            <td>
+             {{ event.dateOfUpload | date: 'dd.MM.yyyy' }}
+            </td>
+    </tr>
+    <tr>
+        <td colspan="7" rowspan="3" style="padding: 1vw; text-align: justify;">
+            {{ event.description }}
+        </td>
+
+            <td><button class="vote-button" (click)="voteUp()" style="color: #C6EFCE; background-color: darkgreen; ">+</button></td>
+
+        <td><button class="vote-button" (click)="voteDown()" style="color: #FFC7CE; background-color: rgb(185, 10, 10);">-</button></td>
+    </tr>
+    <tr>
+        <td class="votes" style="background-color: #C6EFCE; color: darkgreen; padding:0.5vw;">{{ event.pluses }}</td>
+        <td class="votes" style="background-color: #FFC7CE; color: rgb(185, 10, 10);" padding:0.5vw>{{ event.minuses }}</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;" colspan="2">
+            <button (click)="reportThisEvent()">!</button>
+        </td>
+    </tr>
+</table>
+<table *ngIf="event && isModeration" style="width: 100%; border-collapse: collapse;">
+    <tr>
+        <td colspan="7" style="font-weight: bold; font-size: 1.5vw;">
+            <button (click)="goBack()">↶</button> {{ event.name }}
+        </td>
+        <td colspan="3" rowspan="2" style="text-align: center; background-color: #F2F2F2;" class="image-cell">
+            <img [src]="'assets/events/' + event.image" (error)="loadImageError($event)" alt="Obrazek wydarzenia" style="width:10vw; height: auto;" [class]="getImageStyle(event)">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            {{ event.dateOfStart | date: 'dd.MM.yyyy' }} - {{ event.dateOfEnd | date: 'dd.MM.yyyy' }}
+        </td>
+        <td colspan="2">
+            {{ lowestTicketPrice !== undefined ? lowestTicketPrice : 'N/A' }} - {{ highestTicketPrice !== undefined ? highestTicketPrice : 'N/A' }} zł
+        </td>
+        <td>
+            Dodał: {{  this.authorName }} 
+            </td>
+            <td>
+             {{ event.dateOfUpload | date: 'dd.MM.yyyy' }}
+            </td>
+    </tr>
+    <tr>
+        <td colspan="7" rowspan="4" style="padding: 1vw; text-align: justify;">
+            {{ event.description }}
+        </td>
+
+            <td><button class="vote-button" (click)="voteUp()" style="color: #C6EFCE; background-color: darkgreen; ">+</button></td>
+
+        <td><button class="vote-button" (click)="voteDown()" style="color: #FFC7CE; background-color: rgb(185, 10, 10);">-</button></td>
+    </tr>
+    <tr>
+        <td class="votes" style="background-color: #C6EFCE; color: darkgreen; padding:0.5vw;">{{ event.pluses }}</td>
+        <td class="votes" style="background-color: #FFC7CE; color: rgb(185, 10, 10);" padding:0.5vw>{{ event.minuses }}</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">
+            <button (click)="reportThisEvent()">🖊️</button>
+        </td>
+        <td style="text-align: center;">
+            <button (click)="reportThisEvent()">🗑️</button>
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center;" colspan="2">
+            <button (click)="reportThisEvent()">!</button>
+        </td>
+    </tr>
+</table>
+
+
+<div class="ticket-component">
+    <table>
+        <tr>
+            <td colspan="2">Wybierz datę</td>
+            <td colspan="2">Liczba biletów</td>
+            <td colspan="2">Rodzaje biletów</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="ticket-section">
+                    <select id="date-select">
+                        <option *ngFor="let date of event.availableDates">{{ date }}</option>
+                    </select>
+                </div>
+            </td>
+            <td colspan="2">
+                <div class="ticket-section">
+                    <select id="ticket-count">
+                        <option *ngFor="let count of ticketCounts">{{ count }}</option>
+                    </select>
+                </div>
+            </td>
+            <td colspan="2">
+                <div class="ticket-section">
+                    <select id="available-tickets">
+                        <option *ngFor="let ticket of event.availableTickets">{{ ticket }}</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="ticket-message">
+        {{distributorAddress}}
+        <p>
+            JAKIŚ FAJNY KOMUNIKAT, ŻE JEŻELI WSZYSTKO WYBRANIE TO <br>
+            - BILETY SĄ DOSTĘPNE I BĘDĄ KOSZTOWAĆ {{event.totalCost}}, <br>
+            JEŻELI BILETY BĘDĄ NIEDOSTĘPNE TO <br>
+            - WYGLĄDA NA TO ŻE WYBRANE BILETY SĄ NIEDOSTĘPNE - ZACHĘCAMY DO SPRAWDZENIA U DYSTRYBUTORA
+        </p>
+        <button (click)="openDistributorPage()" style="background-color: black; color: yellow;">
+            Nie ma biletu? Sprawdź u dystrybutora
+        </button>
+    </div>
+</div> -->

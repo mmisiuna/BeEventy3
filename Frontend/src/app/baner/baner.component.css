@@ -1,0 +1,102 @@
+button {
+  cursor: pointer;
+}
+
+.baner {
+  background-color: #FCBE1D;
+  display: flex;
+  justify-content: space-between;
+  padding: 1vw;
+  height: 5vw;
+  align-items: center;
+  margin: 0;
+}
+.user-img {
+  width: 4vw; /* Adjust as needed */
+  height: 4vw; /* Adjust as needed */
+  object-fit: cover; /* This ensures the image fits within the circle without distortion */
+  border-radius: 50%; /* This creates a circular shape */
+  overflow: hidden;
+  margin: 1vw;
+}
+
+#add-button {
+  background-color: rgb(254, 247, 218);
+  color: black;
+  width: 4vw; /* Adjust as needed */
+  height: 4vw; /* Adjust as needed */
+  object-fit: cover; /* This ensures the image fits within the circle without distortion */
+  border-radius: 50%; /* This creates a circular shape */
+  overflow: hidden;
+  margin: 1vw;
+}
+
+#registration-button {
+  background-color: black;
+  color: #FCBE1D;
+  width: 12vw;
+  height: 3vw;
+
+  font-size: 2vw;
+  margin: 1vw;
+  font-weight: 700;
+  border-radius: 12vw;
+  font-size: 1.2vw;
+}
+
+#login-button, #loggout-button {
+  color: black;
+  width: 10vw;
+  height: 3vw;
+  background-color: #FCBE1D;
+  font-size: 1.2vw;
+  margin: 1vw;
+  font-weight: 700;
+  border-radius: 12vw;
+}
+
+.email-text{
+  color: black;
+  font-weight: 700;
+  font-size: 1.4vw;
+  margin: 1vw;
+  padding: 1vw;
+}
+
+/* wyszukiwarka */
+.search-bar {
+
+  display: flex;
+  align-items: center;
+}
+
+.wider-input {
+  width: 30vw;
+  height: 4vw;
+  border-top-left-radius: 1vw;
+  border-bottom-left-radius: 1vw;
+  padding-left: 1vw;
+  font-size: 1vw;
+}
+
+.search-button {
+  width: 4vw;
+  height: 4vw;
+  border-top-right-radius: 1vw;
+  border-bottom-right-radius: 1vw;
+  color: black;
+  background-color: #FCBE1D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-img {
+  width: 2vw; /* Adjust as needed */
+  height: 2vw; /* Adjust as needed */
+  object-fit: contain;
+}
+
+b {
+  font-size: 2vw;
+}

@@ -1,0 +1,45 @@
+*{
+  background-color: rgb(254, 247, 218);
+  font-size: 1vw;
+}
+
+  /* navigation-bar.component.css */
+
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 15px;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  padding-left: 30vw;
+  padding-right: 30vw;
+  padding-bottom: 1vw;
+  justify-content: space-between;
+}
+
+button {
+  color: black;
+  margin: 1vw;
+}
+
+button.active {
+  font-size: 1.5vw;
+  color: #FCBE1D;
+}
+
+button:hover {
+  color: #ffcc00;
+}
